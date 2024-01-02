@@ -11,7 +11,7 @@ let path=require('path');
 const PORT=process.env.PORT || 5000;
 app.use(cors());
 const multer = require('multer');
-app.use("/mernBackend/images",express.static(path.join(__dirname+"/uploaded_images")))
+app.use("/images",express.static(path.join(__dirname+"/uploaded_images")))
 app.use("/userProfile",express.static(path.join(__dirname+"/uploaded_images/userProfile")))
 app.use(express.json());
 // mongoose.connect('mongodb+srv://parvez_alam:8DdCuip8ODIkC8cG@cluster0.h4quu.mongodb.net/blog?retryWrites=true&w=majority',{
@@ -41,7 +41,7 @@ storage=multer.diskStorage({
 
 const upload=multer({storage:storage})
 
-app.use('/mernBackend/upload',upload.single('file'),(req,res)=>{
+app.use('/upload',upload.single('file'),(req,res)=>{
 res.status(200).json('file has been uploaded')
 })
 
@@ -56,7 +56,7 @@ storage=multer.diskStorage({
 
 const upload2=multer({storage:storage})
 
-app.use('/mernBackend/uploadProfile',upload2.single('file'),(req,res)=>{
+app.use('/uploadProfile',upload2.single('file'),(req,res)=>{
 res.status(200).json('profile picture has been uploaded')
 })
 
