@@ -56,7 +56,7 @@ storage=multer.diskStorage({
 
 const upload2=multer({storage:storage})
 
-app.use('/uploadProfile',upload2.single('file'),(req,res)=>{
+app.use('/mernBackend/uploadProfile',upload2.single('file'),(req,res)=>{
 res.status(200).json('profile picture has been uploaded')
 })
 
