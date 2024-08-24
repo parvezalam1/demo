@@ -19,7 +19,7 @@
     "upper-case": "^2.0.2"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "author": "blog_coder",
   "license": "ISC",

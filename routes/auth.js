@@ -11,6 +11,7 @@ let bcrypted=require('bcrypt');
 
 
 routes.post('/register',async (req,res)=>{
+
     let salt= await bcrypted.genSalt(10);
 let hashPass=await bcrypted.hash(req.body.password,salt);
 try{
@@ -34,7 +35,7 @@ catch(err){
 //login
 routes.post('/login',async (req,res)=>{
     try{
-        let user=await User.findOne({username:req.body.username})
+        let user=await User.findOne({email:req.body.username})
         !user && res.status(401).json('Username is incurrect')
         let passwordValidate=await bcrypted.compare(req.body.password,user.password)
         !passwordValidate && res.status(401).json('Password is incurrect');
