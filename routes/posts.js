@@ -55,6 +55,7 @@ res.status(201).json('you can only update your account post');
 router.delete('/:delId',async(req,res)=>{
     let post=await Post.findById(req.params.delId);
     let path=`./uploaded_images/${post.photo}`;
+
 if(post.username===req.body.username){
 try{    
     if(fs.existsSync(path)){
@@ -62,12 +63,13 @@ try{
         await fs.unlinkSync('./uploaded_images/'+post.photo)
     }
     await post.delete()
-    res.status(200).json('your post has been deleted successfully');
+    res.status(200).json(1);
 }catch(err){
-res.status(400).json(err);
+res.status(201).json(2);
 }
 }else{
-res.status(400).json('you can delete only your account post');
+    console.log("not found")
+res.status(201).json(0);
 }
 });
 
